@@ -1,9 +1,6 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
 
+import {Provider} from "react-redux";
+import {createStore} from "redux";
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -11,42 +8,24 @@ import {
   Text,
   View
 } from 'react-native';
+import AppContainer from './shared/containers/AppContainer';
+import App from './shared/components/App';
+import configureStore from "./shared/configureStore";
+
+const store = configureStore();
 
 class SocketExample extends Component {
   render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
-    );
+    return <Provider store={store}>
+        <AppContainer />
+      </Provider>
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+// render() {
+//   return <Provider store={store}>
+//     <AppContainer />
+//   </Provider>
+// }
 
 AppRegistry.registerComponent('SocketExample', () => SocketExample);
