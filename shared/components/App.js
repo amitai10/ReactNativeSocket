@@ -3,7 +3,9 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  TextInput,
+  TouchableOpacity
 } from 'react-native';
 
 class App extends Component {
@@ -11,6 +13,7 @@ class App extends Component {
     return (
       <View>
         <Text>{this.props.message}</Text>
+        <TextInput onChangeText={(text) => this.props.onClick(text)}></TextInput>
       </View>
     );
   }
